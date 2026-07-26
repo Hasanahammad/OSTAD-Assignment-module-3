@@ -53,6 +53,13 @@ jobs:
         run: npm install
 
       - name: Deploy Application
+        shell: powershell
         run: |
-          echo "Deploying application..."
+          Write-Host "Deploying application..."
+  
+            $pid = (Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue).OwningProcess
+            if ($pid) {
+              Stop-Process -Id $pid -Force
+            }
+  
           npm start
