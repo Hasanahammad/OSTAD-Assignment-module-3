@@ -55,11 +55,5 @@ jobs:
       - name: Deploy Application
         shell: powershell
         run: |
-          Write-Host "Deploying application..."
-  
-            $pid = (Get-NetTCPConnection -LocalPort 3000 -ErrorAction SilentlyContinue).OwningProcess
-            if ($pid) {
-              Stop-Process -Id $pid -Force
-            }
-  
-          npm start
+          Start-Process npm -ArgumentList "start"
+          Write-Host "Application deployed successfully."
