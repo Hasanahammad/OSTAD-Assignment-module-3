@@ -24,7 +24,7 @@ jobs:
 
       - name: Run Tests
         run: |
-          npm test > test-results.txt
+          npm run check > test-results.txt
           echo "Tests completed successfully" >> test-results.txt
 
       - name: Upload Test Results
